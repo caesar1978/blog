@@ -1,0 +1,12 @@
+<h1>Hello rails</h1>
+<% title "Comments for '#{@post.title}'" %>
+
+<p>Find me in app/views/comments/index.html.erb</p>
+<%= link_to "New Comment", new_post_comment_path %>
+
+<% for comment in @comments do %>
+  <strong>Commenter:</strong>
+  <%= comment.commenter %>
+  <%= simple_format comment.body %>
+  <hr/>
+<% end %>

@@ -1,0 +1,21 @@
+<p>
+  <b>Name:</b>
+  <%=h @post.name %>
+</p>
+<h1><%=h @post.title%></h1>
+<p>
+  <b>Title:</b>
+  <%=h @post.title %>
+</p>
+<p>Created <%= time_ago_in_words(@post.created_at) %></p>
+<%= simple_format(@post.content) %>
+<h2>Comments</h2>
+<%= render :partial => "comments/comments" %>
+
+<p><%= link_to "Comments (#{@post.comments.count})", post_comments_path(@post) %>
+<%= render :partial => "comments/comments" %>
+<% if logged_in? %>
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Destroy', @post, :method => :delete, :confirm => "Are you shure?" %>
+<% end %>
+<%= link_to 'Back', posts_path %>
